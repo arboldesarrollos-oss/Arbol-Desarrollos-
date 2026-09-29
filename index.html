@@ -129,7 +129,7 @@ textarea{min-height:130px;resize:vertical}
 .back:hover{opacity:1;border-color:var(--d)}
 .head .tag{display:block;margin-bottom:10px}
 .hs{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 var(--pad) 14px;scroll-padding:0 var(--pad);scrollbar-width:thin;scrollbar-color:var(--d) #111;-webkit-overflow-scrolling:touch}
-.hs img{flex:0 0 min(80vw,780px);width:min(80vw,780px);aspect-ratio:16/10;object-fit:cover;border-radius:0 44px 0 44px;scroll-snap-align:start;background:#111}
+.hs img{--w:min(80vw,520px);flex:0 0 var(--w);width:var(--w);height:auto!important;max-height:280px;aspect-ratio:2/1;object-fit:cover;object-position:center 45%;border-radius:0 28px 0 28px;scroll-snap-align:start;background:#111}
 .hsn{display:flex;gap:10px;justify-content:flex-end;padding:8px var(--pad) 0}
 .hsn button{width:46px;height:46px;border-radius:0 16px 0 16px;border:2px solid var(--d);background:transparent;color:#fff;font-size:26px;line-height:1;cursor:pointer;transition:.2s}
 .hsn button:hover{background:var(--d);color:#000}
