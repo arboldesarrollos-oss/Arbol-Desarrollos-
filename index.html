@@ -314,7 +314,7 @@ footer{grid-template-columns:1fr;text-align:center}footer img{margin:auto}footer
 
 <section class="page" id="contacto">
 <div class="head"><h1 class="soft">¿Tenés una idea?</h1><p>Hablemos de lo que estás pensando.</p></div>
-<div class="sec"><div class="via"><a class="btn" href="mailto:arboldesarrollos@gmail.com">Escribinos por mail</a><a class="btn" href="https://wa.me/542494252058" target="_blank" rel="noopener">Escribinos por WhatsApp</a></div><p class="alt">o dejanos tu consulta acá</p><form id="f" action="https://formsubmit.co/arboldesarrollos@gmail.com" method="POST"><input type="hidden" name="_subject" value="Nueva consulta desde la web de Arbol Desarrollos"><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="false"><input name="Nombre" placeholder="Nombre" required><input name="Email" type="email" placeholder="Email" required><input name="Telefono" placeholder="Teléfono"><textarea name="Mensaje" placeholder="Contanos tu idea"></textarea><input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off"><button class="btn" type="submit">Enviar</button></form><div id="ok">Gracias. Te escribimos pronto.</div><p id="err" role="alert" style="display:none;text-align:center;font-weight:600;margin-top:18px">No pudimos enviar la consulta. Probá de nuevo o escribinos por mail o WhatsApp.</p></div>
+<div class="sec"><div class="via"><a class="btn" href="mailto:arboldesarrollos@gmail.com">Escribinos por mail</a><a class="btn" href="https://wa.me/542494252058" target="_blank" rel="noopener">Escribinos por WhatsApp</a></div><p class="alt">o dejanos tu consulta acá</p><form id="f" action="https://api.web3forms.com/submit" method="POST"><input type="hidden" name="access_key" value="8f90dbba-9587-48c3-95d9-60e0b8d593c5"><input type="hidden" name="subject" value="Nueva consulta desde la web de Arbol Desarrollos"><input type="hidden" name="from_name" value="Web Arbol Desarrollos"><input name="Nombre" placeholder="Nombre" required><input name="email" type="email" placeholder="Email" required><input name="Telefono" placeholder="Teléfono"><textarea name="Mensaje" placeholder="Contanos tu idea"></textarea><input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off"><button class="btn" type="submit">Enviar</button></form><div id="ok">Gracias. Te escribimos pronto.</div><p id="err" role="alert" style="display:none;text-align:center;font-weight:600;margin-top:18px">No pudimos enviar la consulta. Probá de nuevo o escribinos por mail o WhatsApp.</p></div>
 </section>
 
 </main>
@@ -350,18 +350,14 @@ b[1].onclick=()=>end()?h.scrollTo({left:0,behavior:'smooth'}):h.scrollBy({left:s
 document.getElementById('bg').onclick=()=>mn.classList.toggle('open');
 const MAIL='arboldesarrollos@gmail.com';
 (function(){const f=document.getElementById('f');
-if(/[?&]enviado=1/.test(location.search)){f.style.display='none';document.getElementById('ok').style.display='block'}
-f.onsubmit=async e=>{e.preventDefault();const btn=f.querySelector('button'),err=document.getElementById('err'),d=new FormData(f);
-d.set('_replyto',d.get('Email'));err.style.display='none';
+f.onsubmit=async e=>{e.preventDefault();const btn=f.querySelector('button'),err=document.getElementById('err');
+err.style.display='none';
+const fail=m=>{err.textContent='No pudimos enviar la consulta'+(m?' ('+m+')':'')+'. Probá de nuevo o escribinos por mail o WhatsApp.';err.style.display='block';btn.disabled=false;btn.textContent='Enviar'};
+if(f.access_key.value.indexOf('PEGAR')===0){fail('falta configurar la access key');return}
 btn.disabled=true;btn.textContent='Enviando…';
-try{const r=await fetch('https://formsubmit.co/ajax/'+MAIL,{method:'POST',headers:{Accept:'application/json'},body:d});
-const j=await r.json().catch(()=>({}));console.log('FormSubmit:',r.status,j);
-if(!r.ok||j.success==='false'||j.success===false)throw new Error(j.message||('Error '+r.status));
+try{const r=await fetch(f.action,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(Object.fromEntries(new FormData(f)))});
+const j=await r.json().catch(()=>({}));console.log('Web3Forms:',r.status,j);
+if(!r.ok||!j.success)throw new Error(j.message||('Error '+r.status));
 f.style.display='none';document.getElementById('ok').style.display='block'}
-catch(x){console.error(x);
-if(x instanceof TypeError){ /* fallo de red/CORS/bloqueador: envío directo del formulario */
-if(/^https?:/.test(location.protocol)){let n=f.querySelector('[name=_next]');if(!n){n=document.createElement('input');n.type='hidden';n.name='_next';f.appendChild(n)}
-n.value=location.origin+location.pathname+'?enviado=1#contacto'}
-f.submit();return}
-err.textContent='No pudimos enviar la consulta ('+x.message+'). Probá de nuevo o escribinos por mail o WhatsApp.';err.style.display='block';btn.disabled=false;btn.textContent='Enviar'}}})();
+catch(x){console.error(x);fail(x.message)}}})();
 </script></body></html>
