@@ -353,7 +353,8 @@ document.getElementById('f').onsubmit=async e=>{e.preventDefault();const f=e.tar
 d.set('_replyto',d.get('Email'));err.style.display='none';
 btn.disabled=true;btn.textContent='Enviando…';
 try{const r=await fetch('https://formsubmit.co/ajax/'+MAIL,{method:'POST',headers:{Accept:'application/json'},body:d});
-const j=await r.json();if(!r.ok||j.success==='false'||j.success===false)throw 0;
+const j=await r.json().catch(()=>({}));console.log('FormSubmit:',r.status,j);
+if(!r.ok||j.success==='false'||j.success===false){const m=document.createElement('span');m.textContent=j.message||('Error '+r.status);err.dataset.detail=m.textContent;throw new Error(m.textContent)}
 f.style.display='none';document.getElementById('ok').style.display='block'}
-catch(_){err.style.display='block';btn.disabled=false;btn.textContent='Enviar'}};
+catch(x){console.error(x);err.textContent='No pudimos enviar la consulta ('+(x&&x.message?x.message:'sin conexión')+'). Probá de nuevo o escribinos por mail o WhatsApp.';err.style.display='block';btn.disabled=false;btn.textContent='Enviar'}};
 </script></body></html>
