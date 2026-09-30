@@ -349,12 +349,19 @@ b[0].onclick=()=>h.scrollLeft<8?h.scrollTo({left:h.scrollWidth,behavior:'smooth'
 b[1].onclick=()=>end()?h.scrollTo({left:0,behavior:'smooth'}):h.scrollBy({left:stp(),behavior:'smooth'})});
 document.getElementById('bg').onclick=()=>mn.classList.toggle('open');
 const MAIL='arboldesarrollos@gmail.com';
-document.getElementById('f').onsubmit=async e=>{e.preventDefault();const f=e.target,btn=f.querySelector('button'),err=document.getElementById('err'),d=new FormData(f);
+(function(){const f=document.getElementById('f');
+if(/[?&]enviado=1/.test(location.search)){f.style.display='none';document.getElementById('ok').style.display='block'}
+f.onsubmit=async e=>{e.preventDefault();const btn=f.querySelector('button'),err=document.getElementById('err'),d=new FormData(f);
 d.set('_replyto',d.get('Email'));err.style.display='none';
 btn.disabled=true;btn.textContent='Enviando…';
 try{const r=await fetch('https://formsubmit.co/ajax/'+MAIL,{method:'POST',headers:{Accept:'application/json'},body:d});
 const j=await r.json().catch(()=>({}));console.log('FormSubmit:',r.status,j);
-if(!r.ok||j.success==='false'||j.success===false){const m=document.createElement('span');m.textContent=j.message||('Error '+r.status);err.dataset.detail=m.textContent;throw new Error(m.textContent)}
+if(!r.ok||j.success==='false'||j.success===false)throw new Error(j.message||('Error '+r.status));
 f.style.display='none';document.getElementById('ok').style.display='block'}
-catch(x){console.error(x);err.textContent='No pudimos enviar la consulta ('+(x&&x.message?x.message:'sin conexión')+'). Probá de nuevo o escribinos por mail o WhatsApp.';err.style.display='block';btn.disabled=false;btn.textContent='Enviar'}};
+catch(x){console.error(x);
+if(x instanceof TypeError){ /* fallo de red/CORS/bloqueador: envío directo del formulario */
+if(/^https?:/.test(location.protocol)){let n=f.querySelector('[name=_next]');if(!n){n=document.createElement('input');n.type='hidden';n.name='_next';f.appendChild(n)}
+n.value=location.origin+location.pathname+'?enviado=1#contacto'}
+f.submit();return}
+err.textContent='No pudimos enviar la consulta ('+x.message+'). Probá de nuevo o escribinos por mail o WhatsApp.';err.style.display='block';btn.disabled=false;btn.textContent='Enviar'}}})();
 </script></body></html>
