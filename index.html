@@ -314,7 +314,7 @@ footer{grid-template-columns:1fr;text-align:center}footer img{margin:auto}footer
 
 <section class="page" id="contacto">
 <div class="head"><h1 class="soft">¿Tenés una idea?</h1><p>Hablemos de lo que estás pensando.</p></div>
-<div class="sec"><div class="via"><a class="btn" href="mailto:arboldesarrollos@gmail.com">Escribinos por mail</a><a class="btn" href="https://wa.me/542494252058" target="_blank" rel="noopener">Escribinos por WhatsApp</a></div><p class="alt">o dejanos tu consulta acá</p><form id="f"><input name="Nombre" placeholder="Nombre" required><input name="Email" type="email" placeholder="Email" required><input name="Teléfono" placeholder="Teléfono"><textarea name="Mensaje" placeholder="Contanos tu idea"></textarea><input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off"><button class="btn" type="submit">Enviar</button></form><div id="ok">Gracias. Te escribimos pronto.</div></div>
+<div class="sec"><div class="via"><a class="btn" href="mailto:arboldesarrollos@gmail.com">Escribinos por mail</a><a class="btn" href="https://wa.me/542494252058" target="_blank" rel="noopener">Escribinos por WhatsApp</a></div><p class="alt">o dejanos tu consulta acá</p><form id="f" action="https://formsubmit.co/arboldesarrollos@gmail.com" method="POST"><input type="hidden" name="_subject" value="Nueva consulta desde la web de Árbol"><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="false"><input name="Nombre" placeholder="Nombre" required><input name="Email" type="email" placeholder="Email" required><input name="Teléfono" placeholder="Teléfono"><textarea name="Mensaje" placeholder="Contanos tu idea"></textarea><input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off"><button class="btn" type="submit">Enviar</button></form><div id="ok">Gracias. Te escribimos pronto.</div><p id="err" role="alert" style="display:none;text-align:center;font-weight:600;margin-top:18px">No pudimos enviar la consulta. Probá de nuevo o escribinos por mail o WhatsApp.</p></div>
 </section>
 
 </main>
@@ -349,13 +349,11 @@ b[0].onclick=()=>h.scrollLeft<8?h.scrollTo({left:h.scrollWidth,behavior:'smooth'
 b[1].onclick=()=>end()?h.scrollTo({left:0,behavior:'smooth'}):h.scrollBy({left:stp(),behavior:'smooth'})});
 document.getElementById('bg').onclick=()=>mn.classList.toggle('open');
 const MAIL='arboldesarrollos@gmail.com';
-document.getElementById('f').onsubmit=async e=>{e.preventDefault();const f=e.target,btn=f.querySelector('button'),d=new FormData(f);
-d.append('_subject','Nueva consulta desde la web de Árbol');d.append('_template','table');d.append('_replyto',d.get('Email'));
+document.getElementById('f').onsubmit=async e=>{e.preventDefault();const f=e.target,btn=f.querySelector('button'),err=document.getElementById('err'),d=new FormData(f);
+d.set('_replyto',d.get('Email'));err.style.display='none';
 btn.disabled=true;btn.textContent='Enviando…';
-const done=()=>{f.style.display='none';document.getElementById('ok').style.display='block'};
 try{const r=await fetch('https://formsubmit.co/ajax/'+MAIL,{method:'POST',headers:{Accept:'application/json'},body:d});
-const j=await r.json();if(!r.ok||j.success==='false'||j.success===false)throw 0;done()}
-catch(_){const b='Nombre: '+d.get('Nombre')+'\nEmail: '+d.get('Email')+'\nTeléfono: '+d.get('Teléfono')+'\n\n'+d.get('Mensaje');
-location.href='mailto:'+MAIL+'?subject='+encodeURIComponent('Consulta desde la web de Árbol')+'&body='+encodeURIComponent(b);
-btn.disabled=false;btn.textContent='Enviar'}};
+const j=await r.json();if(!r.ok||j.success==='false'||j.success===false)throw 0;
+f.style.display='none';document.getElementById('ok').style.display='block'}
+catch(_){err.style.display='block';btn.disabled=false;btn.textContent='Enviar'}};
 </script></body></html>
