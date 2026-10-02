@@ -171,3 +171,12 @@ footer ul.fn{font-weight:500;opacity:.85;margin-bottom:14px}
 footer ul.fn a:hover,footer ul.s a:hover{text-decoration:underline;text-underline-offset:4px}
 .hp-btn{text-align:center;margin-top:44px}
 @media(prefers-reduced-motion:reduce){.page{animation:none}}
+
+.pro.sm{grid-template-columns:260px 1fr;max-width:760px;margin:0 auto;border-radius:0 36px 0 36px}
+.pro.sm .pimg{min-height:220px}
+.pro.sm div{padding:26px 28px;gap:10px}
+.pro.sm h2{font-size:clamp(22px,2.4vw,30px)}
+.pro.sm p{font-size:15px}
+.pro.sm .mat span{font-size:13px;padding:5px 11px!important}
+.hp-btn{margin-top:28px}
+@media(max-width:820px){.pro.sm{grid-template-columns:1fr;max-width:420px}.pro.sm .pimg{min-height:180px}}
