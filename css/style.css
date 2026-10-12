@@ -250,3 +250,18 @@ body.lbo{overflow:hidden}
 .tabs button[aria-selected=true]{background:var(--d);color:#000;border-color:var(--d)}
 .tabs button:focus-visible{outline:2px solid var(--o);outline-offset:3px}
 @media(max-width:820px){.tabs button{padding:9px 18px;font-size:14px}}
+/* visor en celular: flechas y texto pegados a la imagen */
+@media(max-width:820px){
+.lb{display:grid;grid-template-columns:48px 1fr 48px;grid-template-areas:"i i i" "p c n";align-content:center;justify-items:center;align-items:center;column-gap:6px;row-gap:12px;padding:64px 10px 24px}
+.lb[hidden]{display:none}
+.lbs{grid-area:i;width:100%;height:auto;max-height:calc(100vh - 190px);max-height:calc(100dvh - 190px)}
+.lb img{max-height:calc(100vh - 190px);max-height:calc(100dvh - 190px)}
+.lb.zm img{max-height:none}
+.lbp,.lbn{position:static;transform:none;top:auto;bottom:auto;left:auto;right:auto;height:44px;width:44px;font-size:28px}
+.lbp{grid-area:p}.lbn{grid-area:n}
+.lbc{position:static;grid-area:c;padding:0;font-size:13px;line-height:1.35;text-align:center}
+.lb.one{grid-template-columns:1fr;grid-template-areas:"i" "c"}
+.lb.zm{grid-template-areas:"i i i" "c c c"}
+.lb.zm .lbc{grid-column:1/-1}
+}
+@media(max-width:820px){.lb{background:rgba(0,0,0,.97)}}
