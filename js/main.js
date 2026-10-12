@@ -30,4 +30,24 @@ if(f){
    .then(function(r){return r.json().catch(function(){return{}}).then(function(j){if(!r.ok||!j.success)throw new Error(j.message||('Error '+r.status));})})
    .then(function(){f.style.display='none';var ok=d.getElementById('ok');ok.style.display='block';ok.focus()})
    .catch(function(x){fail(x.message)})})}
+
+var tps=d.querySelectorAll('.tp');
+if(tps.length){
+ var bar=d.createElement('nav');bar.className='tabs';bar.setAttribute('aria-label','Secciones del proyecto');
+ var links=[];
+ tps.forEach(function(t){var a=d.createElement('a');a.href='#'+t.id;a.textContent=t.getAttribute('data-t');a.setAttribute('role','tab');bar.appendChild(a);links.push(a)});
+ tps[0].parentNode.insertBefore(bar,tps[0]);
+ var show=function(id,scroll){
+  var ok=false;tps.forEach(function(t){if(t.id===id)ok=true});
+  if(!ok)id=tps[0].id;
+  tps.forEach(function(t){t.hidden=t.id!==id});
+  links.forEach(function(a){a.setAttribute('aria-selected',a.getAttribute('href')==='#'+id)});
+  var act=bar.querySelector('[aria-selected=true]');
+  if(act&&bar.scrollTo)bar.scrollTo({left:act.offsetLeft-20,behavior:'smooth'});
+  if(scroll){var top=bar.getBoundingClientRect().top;if(top<62||top>window.innerHeight*.6)window.scrollTo({top:window.scrollY+top-62,behavior:'smooth'})}
+ };
+ bar.addEventListener('click',function(e){var a=e.target.closest('a');if(!a)return;e.preventDefault();var id=a.getAttribute('href').slice(1);history.replaceState(null,'','#'+id);show(id,true)});
+ window.addEventListener('hashchange',function(){show(location.hash.slice(1),true)});
+ show(location.hash.slice(1),false);
+}
 })();
