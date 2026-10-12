@@ -32,26 +32,25 @@ if(f){
    .catch(function(x){fail(x.message)})})}
 
 var tps=d.querySelectorAll('.tp');
-if(tps.length){
+if(tps.length)(function(){
  var bar=d.createElement('nav');bar.className='tabs';bar.setAttribute('aria-label','Secciones del proyecto');
  var links=[];
- tps.forEach(function(t){var a=d.createElement('a');a.href='#'+t.id;a.textContent=t.getAttribute('data-t');a.setAttribute('role','tab');bar.appendChild(a);links.push(a)});
+ tps.forEach(function(t){var a=d.createElement('button');a.type='button';a.setAttribute('data-id',t.id);a.textContent=t.getAttribute('data-t');a.setAttribute('role','tab');bar.appendChild(a);links.push(a)});
  tps[0].parentNode.insertBefore(bar,tps[0]);
  var show=function(id,scroll){
   var ok=false;tps.forEach(function(t){if(t.id===id)ok=true});
   if(!ok)id=tps[0].id;
   tps.forEach(function(t){t.hidden=t.id!==id});
-  links.forEach(function(a){a.setAttribute('aria-selected',a.getAttribute('href')==='#'+id)});
+  links.forEach(function(a){a.setAttribute('aria-selected',a.getAttribute('data-id')===id)});
   var act=bar.querySelector('[aria-selected=true]');
   if(act&&bar.scrollTo)bar.scrollTo({left:act.offsetLeft-20,behavior:'smooth'});
   if(scroll){var top=bar.getBoundingClientRect().top;if(top<62||top>window.innerHeight*.6)window.scrollTo({top:window.scrollY+top-62,behavior:'smooth'})}
  };
- bar.addEventListener('click',function(e){var a=e.target.closest('a');if(!a)return;e.preventDefault();var id=a.getAttribute('href').slice(1);history.replaceState(null,'','#'+id);show(id,true)});
- window.addEventListener('hashchange',function(){show(location.hash.slice(1),true)});
- show(location.hash.slice(1),false);
-}
+ bar.addEventListener('click',function(e){var a=e.target.closest('button');if(!a)return;show(a.getAttribute('data-id'),true)});
+ show('',false);
+})();
 
-if(d.querySelector('.tp')){
+if(d.querySelector('.tp'))(function(){
  var groups=[['.hs img',function(i){return i.getAttribute('src')}],['.planos figure a',function(a){return a.getAttribute('href')}],['.ubi figure img',function(i){return i.getAttribute('src')}]];
  var lb=null,img,cap,cnt,cur=[],ix=0,last=null;
  var build=function(){
@@ -88,5 +87,5 @@ if(d.querySelector('.tp')){
    if(el.tagName==='IMG')el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')act(e)});
   })});
  d.addEventListener('keydown',function(e){if(!lb||lb.hidden)return;if(e.key==='Escape')close();else if(e.key==='ArrowLeft')go(-1);else if(e.key==='ArrowRight')go(1)});
-}
+})();
 })();
