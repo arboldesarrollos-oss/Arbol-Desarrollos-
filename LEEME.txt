@@ -1,0 +1,3 @@
+PARA SUBIR
+El contenido de esta carpeta va en la raiz del hosting (index.html, css/, js/, fonts/, img/ y las carpetas de cada pagina). Mismas rutas que la version anterior.
+La pantalla de carga aparece solo la primera vez que alguien abre la web en esa visita.
