@@ -375,3 +375,10 @@ html.leave main,html.leave footer{opacity:0}
 /* título de Acerca de: más aire antes del primer bloque blanco */
 .head.sp{padding-bottom:calc(90px + var(--ov))}
 @media(max-width:820px){:root{--ov:32px;--rc:44px}}
+
+/* celular: foto principal menos ampliada (se veía borrosa) */
+@media(max-width:820px){
+.hero{min-height:min(600px,calc(100svh - 62px))}
+.hero .bgi,.tan .bgi,.cta .bgi{top:0;height:100%;will-change:auto}
+.rd .hero .bgi{animation:none}
+}

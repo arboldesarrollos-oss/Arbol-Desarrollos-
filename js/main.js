@@ -42,6 +42,7 @@ if(px.length&&!rm){
  var tick=false,upd=function(){
   tick=false;var vh=window.innerHeight;
   px.forEach(function(im){
+   if(window.innerWidth<=820){im.style.transform='';return}
    var r=im.parentNode.getBoundingClientRect();
    if(r.bottom<0||r.top>vh)return;
    var p=(r.top+r.height/2-vh/2)/(vh/2+r.height/2);
