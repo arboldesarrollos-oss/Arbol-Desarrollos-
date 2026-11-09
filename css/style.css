@@ -301,6 +301,7 @@ footer small a{border-bottom:1px solid rgba(255,255,255,.4)}footer small a:hover
 /* hero: acercamiento lento de la foto */
 .rd .hero .bgi{animation:kb 2.8s cubic-bezier(.16,1,.3,1) backwards}
 @keyframes kb{from{scale:1.1}to{scale:1}}
+.nk .hero .bgi{animation:none}
 /* barra superior */
 header nav{transition:transform .9s cubic-bezier(.16,1,.3,1),box-shadow .4s ease}
 html.ld:not(.rd) header nav{transform:translateY(-100%)}
@@ -325,12 +326,21 @@ details p{animation:dd .5s cubic-bezier(.16,1,.3,1)}
 #ldr{display:none}
 html.ld{overflow:hidden}
 html.ld #ldr{display:block;position:fixed;inset:0;z-index:100;cursor:pointer}
-.ld-p{position:absolute;left:0;right:0;height:50.3%;background:#000;transition:transform 1s cubic-bezier(.76,0,.24,1) .3s}
-.ld-t{top:0}.ld-b{bottom:0}
-#ldr.out .ld-t{transform:translateY(-101%)}
-#ldr.out .ld-b{transform:translateY(101%)}
-.ld-c{position:absolute;inset:0;display:grid;place-items:center;transition:opacity .35s ease}
-#ldr.out .ld-c{opacity:0}
+.ld-bg{position:absolute;inset:0;background:#000;transition:opacity .6s ease}
+#ldr.fin .ld-bg{opacity:0}
+.ld-c{position:absolute;inset:0;display:grid;place-items:center;transition:opacity .5s ease}
+#ldr.o1 .ld-c{opacity:0}
+/* ventanita con la foto del hero: se abre y luego hace zoom hasta ocupar el hero */
+.ld-w{position:absolute;inset:0;overflow:hidden;visibility:hidden;
+ clip-path:inset(calc(50% - 1px) var(--l1,40%) calc(50% - 1px) var(--l1,40%) round 0);
+ transition:clip-path .9s cubic-bezier(.76,0,.24,1)}
+#ldr.o1 .ld-w{visibility:visible;clip-path:inset(var(--t1,30%) var(--l1,40%) var(--t1,30%) var(--l1,40%) round 0 26px 0 26px)}
+#ldr.o2 .ld-w{clip-path:inset(var(--t2,62px) 0 var(--b2,0px) 0 round 0);transition-duration:1.4s}
+#ldr.fin .ld-w{opacity:0;transition:clip-path 1.4s cubic-bezier(.76,0,.24,1),opacity .6s ease}
+.ld-i{position:absolute;max-width:none;object-fit:cover;transform:scale(1.35);transform-origin:var(--ox,50%) var(--oy,50%);transition:transform 1.4s cubic-bezier(.76,0,.24,1)}
+#ldr.o2 .ld-i{transform:none}
+.ld-s{position:absolute;opacity:0;background:linear-gradient(180deg,rgba(0,0,0,.34) 0%,rgba(0,0,0,.16) 42%,rgba(0,0,0,.42) 100%);transition:opacity 1.4s ease}
+#ldr.o2 .ld-s{opacity:1}
 .ld-m{width:min(74vw,520px);height:auto;overflow:visible;animation:ldslide .95s cubic-bezier(.7,0,.2,1) 1.55s both}
 @keyframes ldslide{from{transform:translateX(41.5%) scale(1.24)}to{transform:none}}
 .ld-g{transform-box:fill-box;transform-origin:50% 100%;animation:ldgrow 1.1s cubic-bezier(.65,0,.25,1) .1s backwards}
