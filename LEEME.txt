@@ -1,3 +1,16 @@
-PARA SUBIR
-El contenido de esta carpeta va en la raiz del hosting (index.html, css/, js/, fonts/, img/ y las carpetas de cada pagina). Mismas rutas que la version anterior.
-La pantalla de carga aparece solo la primera vez que alguien abre la web en esa visita (marca -> ventanita con la foto -> zoom hasta el hero). Para verla de nuevo: agregar ?intro al final de la direccion.
+SOLO CAMBIOS (v11)
+Subir estos archivos a la raiz del hosting, pisando los existentes (mismas rutas que la version anterior):
+
+404.html
+acerca-de/index.html
+contacto/index.html
+css/style.css
+index.html
+politica-de-privacidad/index.html
+preguntas-frecuentes/index.html
+proyectos/index.html
+proyectos/parque-comercial-barrio-mirage/index.html
+proyectos/roble-208/index.html
+ramas/index.html
+
+No se modifico ninguna imagen: no hace falta borrar ni subir nada de img/.
