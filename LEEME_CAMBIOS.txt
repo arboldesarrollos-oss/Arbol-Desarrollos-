@@ -1,1 +1,1 @@
-SOLO CAMBIOS: copiar estos archivos sobre la web actual, respetando las carpetas (reemplaza los existentes y agrega los nuevos).
+SOLO CAMBIOS (respecto a la v7): copiar estos archivos sobre la web actual, respetando las carpetas (reemplaza los existentes y agrega los nuevos). Si ya subiste la v9, tambien sirve: pisa los mismos archivos.
