@@ -1,20 +1,23 @@
-SOLO CAMBIOS (v14)
-Subir estos archivos a la raiz del hosting, pisando los existentes (mismas rutas que la version anterior):
+PARA SUBIR
+El contenido de esta carpeta va en la raiz del hosting (index.html, css/, js/, fonts/, img/ y las carpetas de cada pagina). Mismas rutas que la version anterior.
+La pantalla de carga aparece solo la primera vez que alguien abre la web en esa visita (marca -> ventanita con la foto -> zoom hasta el hero). Para verla de nuevo: agregar ?intro al final de la direccion.
 
-404.html
-acerca-de/index.html
-contacto/index.html
-css/style.css
-img/arboles-contrapicado-640.webp
-img/arboles-contrapicado-736.webp
-img/detalle-arquitectura-640.webp
-img/detalle-arquitectura-900.webp
-index.html
-politica-de-privacidad/index.html
-preguntas-frecuentes/index.html
-proyectos/index.html
-proyectos/parque-comercial-barrio-mirage/index.html
-proyectos/roble-208/index.html
-ramas/index.html
+CAMBIOS v11
+- Ramas (inicio y pagina Ramas): nuevo diseno de las dos tarjetas Origen y Horizonte.
+- Proyectos: las imagenes de arriba de cada proyecto son un poco mas grandes. Mismos archivos de imagen y mismos nombres: no hay que borrar ni subir imagenes.
 
-Las 4 imagenes de img/ conservan el mismo nombre: al subirlas reemplazan a las viejas, no hay que borrar nada.
+CAMBIOS v12
+- Imagen del arbol (Acerca de y Ramas) y imagen de la terraza (Acerca de) reemplazadas, con los mismos nombres de archivo: arboles-contrapicado-640/736.webp y detalle-arquitectura-640/900.webp. Al subirlas pisan a las anteriores.
+
+CAMBIOS v13 (acumulado sobre la v11 ya subida)
+- Inicio: ramas con fondo blanco y bloque Mas que construir en negro; el hero queda quieto y ese bloque lo tapa al bajar.
+- Imagen del arbol y de la terraza reemplazadas con los mismos nombres de archivo (arboles-contrapicado-640/736.webp, detalle-arquitectura-640/900.webp).
+
+CAMBIOS v14 (acumulado sobre la v11 ya subida)
+- Inicio: todo lo que viene despues del hero lo tapa por completo (sin franjas ni esquinas por donde se vea la foto). Ramas con fondo blanco y bloque Mas que construir en negro; el hero queda quieto y ese bloque lo tapa al bajar.
+- Imagen del arbol y de la terraza reemplazadas con los mismos nombres de archivo (arboles-contrapicado-640/736.webp, detalle-arquitectura-640/900.webp).
+
+CAMBIOS v16 (acumulado sobre la v14 ya subida)
+- Ramas (inicio y pagina Ramas): "Una misma vision" pasa a la tipografia script (la de "Raices firmes"), sin el color naranja.
+- Inicio, bloque de ramas: subtitulo debajo del titulo. Ramitas adentro de las tarjetas Origen y Horizonte (como en la pagina Ramas). En celular el bloque queda mas compacto.
+- Archivos modificados: index.html, ramas/index.html, css/style.css, LEEME.txt

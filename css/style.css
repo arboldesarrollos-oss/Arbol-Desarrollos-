@@ -446,7 +446,7 @@ html.leave main,html.leave footer{opacity:0}
 /* ramas: fondo blanco */
 .ramas{background:#fff}
 .ramas h2{color:#000}
-.ramas h2>span:not(.w){color:var(--o)}
+.ramas h2>span:not(.w){color:#000}
 .ramas .ic img{filter:invert(1)}
 @media(max-width:820px){.ramas{background:#fff}}
 /* todo lo que viene después del hero lo tapa por completo (aunque la foto aún no haya cargado) */
@@ -455,3 +455,26 @@ html.leave main,html.leave footer{opacity:0}
 .hero~.sec{max-width:none;margin:0;padding-left:max(var(--pad),calc((100% - 1240px)/2 + var(--pad)));padding-right:max(var(--pad),calc((100% - 1240px)/2 + var(--pad)))}
 /* esquinas redondeadas del tamano de la superposicion: no dejan ver el hero por detras */
 .hero~.split,.hero~.ramas,.hero~.head{border-radius:0 var(--ov) 0 0}
+
+/* ============ v16: titulo de ramas con la tipografia script, sin naranja ============ */
+.tit-script{font-family:var(--script);font-weight:400;font-size:1.45em;line-height:1;display:inline-block;margin-top:.06em;color:inherit!important}
+.ramas h2{line-height:1}
+.ramas .rsub{font-size:clamp(16px,1.6vw,20px);font-weight:500;margin-top:18px;color:#000;opacity:.75}
+
+/* v16: inicio, ramitas adentro de las tarjetas (como en la pagina Ramas) */
+.ramas .duo{grid-template-columns:1fr 1fr}
+.ramas .duo .l,.ramas .duo .r{position:relative;overflow:hidden;min-height:230px}
+.ramas .duo .l>*,.ramas .duo .r>*{position:relative}
+.ramas .duo .rb{position:absolute;right:-40px;top:50%;width:170px;max-width:none;height:auto;opacity:.3;pointer-events:none;transform:translateY(-50%) rotate(var(--rot,0deg));filter:none}
+.ramas .duo p{max-width:330px}
+/* v16: en celular el bloque de ramas es mas compacto */
+@media(max-width:820px){
+.ramas{padding:44px var(--pad) 48px}
+.ramas h2{font-size:clamp(30px,9vw,40px)}
+.ramas .rsub{margin-top:10px;font-size:15px}
+.ramas .duo{grid-template-columns:1fr;margin:26px auto 28px;gap:14px}
+.ramas .duo .l,.ramas .duo .r{padding:22px 22px 24px;min-height:0}
+.ramas .duo .rb{width:130px;right:-30px}
+.ramas .duo h3{margin-top:6px;font-size:26px}
+.ramas .duo p{margin-top:8px;max-width:78%}
+}
