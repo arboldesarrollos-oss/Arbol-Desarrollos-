@@ -1,10 +1,14 @@
-SOLO CAMBIOS (v11)
+SOLO CAMBIOS (v14)
 Subir estos archivos a la raiz del hosting, pisando los existentes (mismas rutas que la version anterior):
 
 404.html
 acerca-de/index.html
 contacto/index.html
 css/style.css
+img/arboles-contrapicado-640.webp
+img/arboles-contrapicado-736.webp
+img/detalle-arquitectura-640.webp
+img/detalle-arquitectura-900.webp
 index.html
 politica-de-privacidad/index.html
 preguntas-frecuentes/index.html
@@ -13,4 +17,4 @@ proyectos/parque-comercial-barrio-mirage/index.html
 proyectos/roble-208/index.html
 ramas/index.html
 
-No se modifico ninguna imagen: no hace falta borrar ni subir nada de img/.
+Las 4 imagenes de img/ conservan el mismo nombre: al subirlas reemplazan a las viejas, no hay que borrar nada.
