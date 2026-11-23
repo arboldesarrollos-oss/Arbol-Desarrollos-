@@ -105,7 +105,7 @@ if(L&&root.classList.contains('ld')){
   wi.src=hb.currentSrc||hb.src;
   var imgOk=function(){step()};
   if(wi.complete&&wi.naturalWidth)imgOk();else{wi.onload=imgOk;wi.onerror=imgOk}
-  setTimeout(step,Math.max(0,3100-performance.now()));
+  setTimeout(step,Math.max(0,3800-performance.now()));
   if(d.readyState==='complete')step();else window.addEventListener('load',step);
   setTimeout(function(){if(!started)finish()},8000);
   window.addEventListener('resize',function(){if(started&&!done)finish()});

@@ -21,3 +21,8 @@ CAMBIOS v16 (acumulado sobre la v14 ya subida)
 - Ramas (inicio y pagina Ramas): "Una misma vision" pasa a la tipografia script (la de "Raices firmes"), sin el color naranja.
 - Inicio, bloque de ramas: subtitulo debajo del titulo. Ramitas adentro de las tarjetas Origen y Horizonte (como en la pagina Ramas). En celular el bloque queda mas compacto.
 - Archivos modificados: index.html, ramas/index.html, css/style.css, LEEME.txt
+
+CAMBIOS v17
+- Marca nueva "Arbol Desarrollos" (sin "inmobiliarios") en el encabezado de todas las paginas (img/logo.svg) y en la pantalla de carga animada (index.html).
+- Archivos modificados: img/logo.svg, index.html, todas las paginas (tamano del logo), css/style.css, LEEME.txt
+- (v17) Encabezado: simbolo del arbol + palabra "Arbol" (img/logo-nav.svg). La pantalla de carga muestra la marca completa un poco mas de tiempo antes de abrir la ventana del hero (js/main.js).
